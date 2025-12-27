@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Tops In Pizza | Orillia</title>
+    <meta name="description" content="Full menu with prices. Pizza, wings, pasta, subs, salads, and more. Gluten-free, keto, and vegan options available. Order online or call for delivery.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <style>
+        /* Menu-specific styles */
+        .menu-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--cream-dark);
+            margin-bottom: 40px;
+        }
+        
+        .menu-nav a {
+            padding: 8px 16px;
+            background: var(--cream-dark);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-nav a:hover {
+            background: var(--wine);
+            color: var(--white);
+        }
+        
+        .menu-category {
+            margin-bottom: 50px;
+            scroll-margin-top: 100px;
+        }
+        
+        .menu-category-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--wine);
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--wine);
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .menu-category-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .menu-category-note {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item-info {
+            flex: 1;
+            padding-right: 16px;
+        }
+        
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+        
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.5;
+        }
+        
+        .menu-item-price {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            color: var(--wine);
+            white-space: nowrap;
+            text-align: right;
+        }
+        
+        .menu-item-price small {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--warm-gray);
+        }
+        
+        .dietary-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        
+        .badge-gf {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .badge-keto {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        /* Pizza size table */
+        .pizza-sizes {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .pizza-sizes-header {
+            font-weight: 600;
+            color: var(--charcoal);
+            padding: 8px;
+            background: var(--cream-dark);
+            text-align: center;
+        }
+        
+        .pizza-sizes-header:first-child {
+            text-align: left;
+        }
+        
+        .pizza-size-row {
+            display: contents;
+        }
+        
+        .pizza-size-row > div {
+            padding: 10px 8px;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        
+        .pizza-size-row > div:not(:first-child) {
+            text-align: center;
+            font-weight: 600;
+            color: var(--wine);
+        }
+        
+        .pizza-size-row .item-desc {
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+            font-weight: 400;
+        }
+        
+        /* Specials box */
+        .specials-box {
+            background: linear-gradient(135deg, var(--wine) 0%, var(--wine-dark) 100%);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-bottom: 50px;
+            color: var(--white);
+        }
+        
+        .specials-box h2 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .special-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .special-item:last-child {
+            border-bottom: none;
+        }
+        
+        .special-day {
+            color: var(--gold);
+            font-weight: 600;
+            min-width: 100px;
+        }
+        
+        .special-desc {
+            flex: 1;
+            padding: 0 16px;
+        }
+        
+        .special-price {
+            font-weight: 700;
+        }
+        
+        @media (max-width: 600px) {
+            .pizza-sizes {
+                font-size: 0.75rem;
+            }
+            
+            .special-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+            
+            .special-desc {
+                padding: 0;
+            }
+        }
+        
+        /* Delivery Zone Styles */
+        .delivery-zone-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .delivery-map {
+            max-width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .delivery-info {
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .delivery-pricing h3 {
+            color: var(--wine);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .zone-item {
+            background: var(--white);
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 600;
+            color: var(--charcoal);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .zone-num {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--wine);
+            margin-bottom: 2px;
+        }
+        
+        .delivery-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+        }
+        
+        .delivery-note a {
+            font-weight: 600;
+        }
+        
+        @media (min-width: 768px) {
+            .delivery-zone-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 40px;
+            }
+            
+            .delivery-map {
+                max-width: 60%;
+            }
+            
+            .delivery-info {
+                flex: 1;
+            }
+            
+            .zone-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <img src="images/Tops_Logo.png" alt="Tops In Pizza Logo" class="logo-img">
+                <span class="logo-text">
+                    <span class="logo-main">Tops In Pizza</span>
+                    <span class="logo-tagline">Since 1974</span>
+                </span>
+            </a>
+            
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Menu</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="catering.html">Catering</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="tel:7053278677" class="btn btn-primary header-cta">Call to Order</a>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <nav class="nav-mobile">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="catering.html">Catering</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:7053278677" class="text-wine">Call (705) 327-8677</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="page-hero-bg">
+            <img src="images/oven.jpg" alt="Pizzas baking in our oven">
+        </div>
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Our Menu</h1>
+                <p class="subtitle">Celebrating 50 Years - Prices as of September 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Content -->
+    <section class="menu-section">
+        <div class="container">
+            
+            <!-- Quick Nav -->
+            <nav class="menu-nav">
+                <a href="#specials">Specials</a>
+                <a href="#pizza">Pizza</a>
+                <a href="#gourmet">Gourmet Pizzas</a>
+                <a href="#wings">Wings</a>
+                <a href="#appetizers">Appetizers</a>
+                <a href="#salads">Salads</a>
+                <a href="#subs">Subs</a>
+                <a href="#pasta">Pasta</a>
+                <a href="#dinners">Dinners</a>
+                <a href="#keto">Keto</a>
+                <a href="#delivery">Delivery Zones</a>
+            </nav>
+            
+            <!-- Daily Specials -->
+            <div class="specials-box" id="specials">
+                <h2>Daily Specials</h2>
+                <p class="menu-category-note" style="color: rgba(255,255,255,0.7);">Pickup Only - Any changes cancel special pricing</p>
+                
+                <div class="special-item">
+                    <span class="special-day">Everyday</span>
+                    <span class="special-desc">One 8-slice One Topping Pizza</span>
+                    <span class="special-price">$12.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Everyday</span>
+                    <span class="special-desc">One 8-slice Pizza with up to 5 toppings</span>
+                    <span class="special-price">$19.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Everyday</span>
+                    <span class="special-desc">One 10-slice Pizza with up to 5 toppings</span>
+                    <span class="special-price">$23.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Everyday</span>
+                    <span class="special-desc">Spaghetti with meat sauce and garlic bun</span>
+                    <span class="special-price">$10.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Tuesday</span>
+                    <span class="special-desc">Baked Lasagna or Baked Spaghetti</span>
+                    <span class="special-price">$12.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Wednesday</span>
+                    <span class="special-desc">Two 12" Medium Pizzas (8-slice) - Max 3 toppings each</span>
+                    <span class="special-price">$27.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Thursday</span>
+                    <span class="special-desc">12" Medium Pizza (8-slice) & 10 Wings Combo</span>
+                    <span class="special-price">$34.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Friday</span>
+                    <span class="special-desc">18" X-Large Pizza (14-slice) with 5 toppings</span>
+                    <span class="special-price">$30.99</span>
+                </div>
+                <div class="special-item">
+                    <span class="special-day">Saturday</span>
+                    <span class="special-desc">18" X-Large Pizza (14-slice) with 3 toppings</span>
+                    <span class="special-price">$28.99</span>
+                </div>
+            </div>
+            
+            <!-- Single Pizzas -->
+            <div class="menu-category" id="pizza">
+                <h2 class="menu-category-title">Build Your Own Pizza</h2>
+                
+                <div class="pizza-sizes">
+                    <div class="pizza-sizes-header"></div>
+                    <div class="pizza-sizes-header">Medium 12"<br><small>8-slice</small></div>
+                    <div class="pizza-sizes-header">Large 14"<br><small>10-slice</small></div>
+                    <div class="pizza-sizes-header">X-Large 18"<br><small>14-slice</small></div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Basic</strong><br><span class="item-desc">Cheese and sauce</span></div>
+                        <div>$15.99</div>
+                        <div>$17.99</div>
+                        <div>$20.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Regular Toppings</strong><br><span class="item-desc">Each additional</span></div>
+                        <div>$1.99</div>
+                        <div>$2.19</div>
+                        <div>$2.49</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Additional Toppings</strong><br><span class="item-desc">Premium items</span></div>
+                        <div>$2.19</div>
+                        <div>$2.49</div>
+                        <div>$2.99</div>
+                    </div>
+                </div>
+                
+                <p style="font-size: 0.9rem; color: var(--warm-gray); margin-bottom: 12px;"><strong>Regular Toppings:</strong> Pepperoni, Mushrooms, Green Peppers, Ham, Olives, Bacon, Onions, Ground Beef, Salami, Tomatoes, Pineapple, Hot Peppers, Black Olives, Red Sweet Peppers, Garlic, Italian Sausage, Broccoli, Red Onions, Jalapeno Peppers, Spinach</p>
+                
+                <p style="font-size: 0.9rem; color: var(--warm-gray);"><strong>Additional Toppings:</strong> Extra/Double Cheese, Feta Cheese, Daiya Dairy-free Cheese, Grilled Chicken, Sun-Dried Tomatoes, Gourmet Green Olives, Cheddar Cheese, Chorizo Sausage, Capers, Turkey Pepperoni, Anchovies, Nut-free Pesto</p>
+            </div>
+            
+            <!-- Two Pizza Combos -->
+            <div class="menu-category">
+                <h2 class="menu-category-title">Two Pizza Combos</h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Two 8-slice Pizzas</div>
+                        <div class="menu-item-desc">Cheese and one regular topping. Extra toppings $1.99 each.</div>
+                    </div>
+                    <div class="menu-item-price">$30.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Two 10-slice Pizzas</div>
+                        <div class="menu-item-desc">Cheese and one regular topping. Extra toppings $2.19 each.</div>
+                    </div>
+                    <div class="menu-item-price">$35.99</div>
+                </div>
+            </div>
+            
+            <!-- Gourmet Pizzas -->
+            <div class="menu-category" id="gourmet">
+                <h2 class="menu-category-title">Gourmet Pizzas</h2>
+                
+                <div class="pizza-sizes">
+                    <div class="pizza-sizes-header"></div>
+                    <div class="pizza-sizes-header">Medium</div>
+                    <div class="pizza-sizes-header">Large</div>
+                    <div class="pizza-sizes-header">X-Large</div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Garlic Pizza</strong><br><span class="item-desc">Garlic base with mozzarella and parmesan</span></div>
+                        <div>$16.99</div>
+                        <div>$18.99</div>
+                        <div>$21.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Tops Deluxe</strong><br><span class="item-desc">Pepperoni, ham, tomatoes, green peppers, onions, olives, bacon</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>OPA! Pizza</strong><br><span class="item-desc">Garlic base with chicken, spinach, broccoli, feta, parmesan</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Greek Pizza</strong><br><span class="item-desc">Mozzarella, feta, fresh garlic, black olives, tomatoes, onions, gourmet green olives</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Chicken Souvlaki Pizza</strong><br><span class="item-desc">Garlic base, red onion, cucumber, black olives, chicken, feta, tomato, fresh garlic, tzatziki</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Meatatarian Pizza</strong><br><span class="item-desc">Pepperoni, chorizo sausage, Italian sausage, ham, salami, ground beef, bacon, turkey pepperoni</span></div>
+                        <div>$30.99</div>
+                        <div>$34.99</div>
+                        <div>$41.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Southwestern Pizza</strong><br><span class="item-desc">Kansas City BBQ sauce, red onion, red pepper, green pepper, mushrooms, chicken, mozzarella, cheddar</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Bruschetta Pizza</strong><br><span class="item-desc">Garlic base, tomatoes, fresh garlic, oregano, feta, onion, parsley flakes</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Pesto Pizza</strong><br><span class="item-desc">Garlic base, capers, nut-free pesto, mozzarella, cheddar, spinach, hot peppers</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>Pulled Pork Pizza</strong><br><span class="item-desc">Garlic base, red pepper, red onion, pineapple, mozzarella, cheddar, pulled pork, Creamy Dill & Richards Applewood sauces</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                    
+                    <div class="pizza-size-row">
+                        <div><strong>"Spicy Pete" Pickle Pizza</strong><br><span class="item-desc">Garlic base, ground beef, mozzarella, cheddar, pickles, sweet chili sauce</span></div>
+                        <div>$25.99</div>
+                        <div>$30.99</div>
+                        <div>$35.99</div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" style="background: var(--cream-dark); padding: 16px; border-radius: var(--radius-sm); margin-top: 20px;">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Gluten-Free Pizza <span class="dietary-badge badge-gf">GF</span></div>
+                        <div class="menu-item-desc">8-slice only. Regular toppings $1.99, Additional toppings $2.19.</div>
+                    </div>
+                    <div class="menu-item-price">$20.99</div>
+                </div>
+            </div>
+            
+            <!-- Panzerotti -->
+            <div class="menu-category">
+                <h2 class="menu-category-title">Panzerotti</h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Panzerotti</div>
+                        <div class="menu-item-desc">Tomato sauce, cheese, and 3 regular toppings</div>
+                    </div>
+                    <div class="menu-item-price">$18.99</div>
+                </div>
+            </div>
+            
+            <!-- Wings -->
+            <div class="menu-category" id="wings">
+                <h2 class="menu-category-title">Wings <span class="dietary-badge badge-gf">GF</span></h2>
+                <p class="menu-category-note">Oven baked to crispy perfection - less cholesterol. Increments of 10 wings.</p>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">10 Wings</div>
+                    </div>
+                    <div class="menu-item-price">$18.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">20 Wings</div>
+                    </div>
+                    <div class="menu-item-price">$31.99</div>
+                </div>
+                
+                <p style="font-size: 0.9rem; color: var(--warm-gray); margin-top: 16px;"><strong>Sauces:</strong> Mild, Medium, Hot, Suicide, Honey Garlic, Kansas City, Creamy Dill, Richards Applewood</p>
+            </div>
+            
+            <!-- Appetizers -->
+            <div class="menu-category" id="appetizers">
+                <h2 class="menu-category-title">Appetizers</h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Garlic Bread</div>
+                    </div>
+                    <div class="menu-item-price">$7.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Garlic Bread with Cheese</div>
+                    </div>
+                    <div class="menu-item-price">$9.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Garlic Bread with Cheese and Bacon</div>
+                    </div>
+                    <div class="menu-item-price">$10.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Bruschetta Garlic Bread</div>
+                        <div class="menu-item-desc">Tomatoes, fresh garlic, oregano, feta cheese, onions, parsley flakes</div>
+                    </div>
+                    <div class="menu-item-price">$13.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">3 Meatballs</div>
+                        <div class="menu-item-desc">Covered in spaghetti sauce</div>
+                    </div>
+                    <div class="menu-item-price">$10.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">6 Dough Balls</div>
+                    </div>
+                    <div class="menu-item-price">$8.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">6 Dough Balls with Feta Cheese</div>
+                    </div>
+                    <div class="menu-item-price">$12.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">6 Dough Balls with Marinara, Pepperoni & Cheese</div>
+                    </div>
+                    <div class="menu-item-price">$11.99</div>
+                </div>
+            </div>
+            
+            <!-- Gourmet Salads -->
+            <div class="menu-category" id="salads">
+                <h2 class="menu-category-title">Gourmet Salads</h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Caesar Salad</div>
+                        <div class="menu-item-desc">Made with our homemade dressing</div>
+                    </div>
+                    <div class="menu-item-price">$13.99 <small>Small</small> $16.99 <small>Large</small></div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Onassis (Greek) Salad</div>
+                        <div class="menu-item-desc">Made with our famous house dressing</div>
+                    </div>
+                    <div class="menu-item-price">$13.99 <small>Small</small> $16.99 <small>Large</small></div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chef Salad</div>
+                    </div>
+                    <div class="menu-item-price">$10.99 <small>Small</small> $13.99 <small>Large</small></div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Tomato Salad</div>
+                        <div class="menu-item-desc">Tomatoes, cucumber, onion, green pepper, black olives, feta, hot pepper, green olives, homemade dressing</div>
+                    </div>
+                    <div class="menu-item-price">$15.49 <small>Small</small> $19.99 <small>Large</small></div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Add Chicken to Any Salad</div>
+                    </div>
+                    <div class="menu-item-price">$6.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Greek or Caesar Platter</div>
+                    </div>
+                    <div class="menu-item-price">$39.99</div>
+                </div>
+            </div>
+            
+            <!-- Gourmet Subs -->
+            <div class="menu-category" id="subs">
+                <h2 class="menu-category-title">Gourmet Subs</h2>
+                <p class="menu-category-note">All served with lettuce, cheese, onions, tomatoes, sub sauce, salt and pepper, mustard or mayonnaise. Additional toppings $1.39 each. Extra cheese $2.49.</p>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Assorted</div>
+                    </div>
+                    <div class="menu-item-price">$12.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">B.L.T.</div>
+                    </div>
+                    <div class="menu-item-price">$15.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chicken</div>
+                    </div>
+                    <div class="menu-item-price">$15.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Turkey & Bacon</div>
+                    </div>
+                    <div class="menu-item-price">$15.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Pizza Sub</div>
+                        <div class="menu-item-desc">Pepperoni, green peppers, mushrooms, mozzarella</div>
+                    </div>
+                    <div class="menu-item-price">$14.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Meatball Sub</div>
+                        <div class="menu-item-desc">Homemade meatballs with meat sauce and mozzarella</div>
+                    </div>
+                    <div class="menu-item-price">$14.99</div>
+                </div>
+            </div>
+            
+            <!-- Pastas -->
+            <div class="menu-category" id="pasta">
+                <h2 class="menu-category-title">Pastas</h2>
+                <p class="menu-category-note">All individual pastas served with half a loaf of garlic bread.</p>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Spaghetti with Meat Sauce</div>
+                    </div>
+                    <div class="menu-item-price">$13.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Spaghetti with Meatballs</div>
+                        <div class="menu-item-desc">3 meatballs</div>
+                    </div>
+                    <div class="menu-item-price">$16.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Baked Lasagna or Baked Spaghetti</div>
+                        <div class="menu-item-desc">Baked with pepperoni, mushrooms, and cheese</div>
+                    </div>
+                    <div class="menu-item-price">$15.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Lasagna or Spaghetti Platter</div>
+                        <div class="menu-item-desc">Serves 4-6. Includes Greek or Caesar salad and 12" Garlic Pizza.</div>
+                    </div>
+                    <div class="menu-item-price">$65.99</div>
+                </div>
+            </div>
+            
+            <!-- Hot Sandwiches -->
+            <div class="menu-category">
+                <h2 class="menu-category-title">Hot Sandwiches</h2>
+                <p class="menu-category-note">Served on a crusty Italian bun with tomato sauce and mozzarella cheese.</p>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Eggplant, Veal, or Chicken Parmigiana</div>
+                    </div>
+                    <div class="menu-item-price">$14.29</div>
+                </div>
+            </div>
+            
+            <!-- Dinners -->
+            <div class="menu-category" id="dinners">
+                <h2 class="menu-category-title">Dinners</h2>
+                <p class="menu-category-note">All dinners served with half a loaf of garlic bread.</p>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Eggplant Parmigiana</div>
+                        <div class="menu-item-desc">Served with baked potato, sour cream, butter, and dinner salad with house dressing</div>
+                    </div>
+                    <div class="menu-item-price">$25.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Veal or Chicken Parmigiana <span class="dietary-badge badge-gf">GF</span></div>
+                        <div class="menu-item-desc">Served with baked potato, sour cream, butter, and dinner salad with house dressing. Or with spaghetti and homemade meat sauce ($25.99). Or with baked lasagna ($26.99).</div>
+                    </div>
+                    <div class="menu-item-price">$25.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Chicken Souvlaki <span class="dietary-badge badge-gf">GF</span></div>
+                        <div class="menu-item-desc">Served with baked potato, Greek dinner salad, tzatziki sauce, sour cream, and butter</div>
+                    </div>
+                    <div class="menu-item-price">$25.99</div>
+                </div>
+            </div>
+            
+            <!-- Keto Items -->
+            <div class="menu-category" id="keto">
+                <h2 class="menu-category-title">Keto Items <span class="dietary-badge badge-gf">GF</span> <span class="dietary-badge badge-keto">KETO</span></h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Lettuce Wrap</div>
+                        <div class="menu-item-desc">Chicken or Turkey & Bacon. Served with cheese, lettuce, onion, tomatoes, and your choice of mustard or mayonnaise. Extra toppings $1.39 each.</div>
+                    </div>
+                    <div class="menu-item-price">$15.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Pizza Base One</div>
+                        <div class="menu-item-desc">Pepperoni or Ham base + two regular toppings. Regular toppings $1.99, Additional toppings $2.19.</div>
+                    </div>
+                    <div class="menu-item-price">$21.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Pizza Base Two</div>
+                        <div class="menu-item-desc">Eggplant, Zucchini, or Cheese base + two regular toppings. Regular toppings $1.99, Additional toppings $2.19.</div>
+                    </div>
+                    <div class="menu-item-price">$23.99</div>
+                </div>
+            </div>
+            
+            <!-- Dessert -->
+            <div class="menu-category">
+                <h2 class="menu-category-title">Dessert</h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Baklava (Walnut Strudel)</div>
+                    </div>
+                    <div class="menu-item-price">$6.99</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Carrot Cake</div>
+                    </div>
+                    <div class="menu-item-price">$6.99</div>
+                </div>
+            </div>
+            
+            <!-- Beverages -->
+            <div class="menu-category">
+                <h2 class="menu-category-title">Beverages & Dips</h2>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Canned Pop</div>
+                    </div>
+                    <div class="menu-item-price">$1.89</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Glass Bottle Pop</div>
+                    </div>
+                    <div class="menu-item-price">$3.49</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Water</div>
+                    </div>
+                    <div class="menu-item-price">$2.29</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">2-Litre Pop</div>
+                    </div>
+                    <div class="menu-item-price">$3.49</div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <div class="menu-item-name">Dips</div>
+                        <div class="menu-item-desc">Cheddar, Garlic & Ranch</div>
+                    </div>
+                    <div class="menu-item-price">$1.49</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Delivery Zones -->
+    <section id="delivery" class="bg-cream">
+        <div class="container">
+            <div class="section-header">
+                <h2>Delivery Zones & Charges</h2>
+                <p class="subtitle">We deliver throughout Orillia and surrounding areas via GottaEatLocal.com</p>
+            </div>
+            
+            <div class="delivery-zone-wrapper">
+                <img src="images/delivery-zones.jpg" alt="Delivery zone map showing 12 zones around Orillia with pricing from $6 to $12" class="delivery-map">
+                
+                <div class="delivery-info">
+                    <div class="delivery-pricing">
+                        <h3>Zone Pricing</h3>
+                        <div class="zone-grid">
+                            <div class="zone-item"><span class="zone-num">1</span> $6</div>
+                            <div class="zone-item"><span class="zone-num">2</span> $8</div>
+                            <div class="zone-item"><span class="zone-num">3</span> $10</div>
+                            <div class="zone-item"><span class="zone-num">4</span> $11</div>
+                            <div class="zone-item"><span class="zone-num">5</span> $12</div>
+                            <div class="zone-item"><span class="zone-num">6</span> $8</div>
+                            <div class="zone-item"><span class="zone-num">7</span> $10</div>
+                            <div class="zone-item"><span class="zone-num">8</span> $7</div>
+                            <div class="zone-item"><span class="zone-num">9</span> $11</div>
+                            <div class="zone-item"><span class="zone-num">10</span> $12</div>
+                            <div class="zone-item"><span class="zone-num">11</span> $12</div>
+                            <div class="zone-item"><span class="zone-num">12</span> $9</div>
+                        </div>
+                    </div>
+                    <p class="delivery-note">$15 minimum order for delivery. Order online at <a href="https://www.gottaeatlocal.com" target="_blank" rel="noopener">GottaEatLocal.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="bg-wine cta-banner">
+        <div class="container">
+            <h2>Ready to Order?</h2>
+            <p>Call ahead for pickup or order online for delivery. $15 minimum for delivery orders.</p>
+            <a href="tel:7053278677" class="btn btn-gold">Call (705) 327-8677</a>
+            <a href="https://www.gottaeatlocal.com" target="_blank" rel="noopener" class="btn btn-secondary" style="border-color: var(--white); color: var(--white);">Order Online</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo footer-logo">
+                        <img src="images/Tops_Logo.png" alt="Tops In Pizza Logo" class="logo-img">
+                        <span class="logo-text">
+                            <span class="logo-main">Tops In Pizza</span>
+                            <span class="logo-tagline">Since 1974</span>
+                        </span>
+                    </div>
+                    <p>Family-owned and operated for over 50 years. Serving Orillia with fresh, homemade Italian food made with love.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="catering.html">Catering</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:7053278677">(705) 327-8677</a></li>
+                        <li>276 Memorial Avenue</li>
+                        <li>Orillia, ON L3V 5X6</li>
+                        <li><a href="contact.html">Get Directions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>2024 Tops In Pizza. All rights reserved. Proudly serving Orillia since 1974.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
