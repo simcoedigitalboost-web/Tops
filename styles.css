@@ -275,12 +275,14 @@ section {
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
+    position: relative;
+    z-index: 1001;
 }
 
 .nav-toggle span {
@@ -289,6 +291,18 @@ section {
     height: 2px;
     background: var(--charcoal);
     transition: all 0.3s ease;
+}
+
+.nav-toggle.active {
+    background: var(--wine);
+    border-radius: 50%;
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+}
+
+.nav-toggle.active span {
+    background: var(--white);
 }
 
 .nav-toggle.active span:nth-child(1) {
