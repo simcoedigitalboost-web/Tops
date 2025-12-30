@@ -538,6 +538,14 @@ section {
     color: var(--white);
 }
 
+.bg-wine .featured-card h3 {
+    color: var(--charcoal);
+}
+
+.bg-wine .featured-card p {
+    color: var(--warm-gray);
+}
+
 .bg-wine .subtitle {
     color: rgba(255, 255, 255, 0.7);
 }
